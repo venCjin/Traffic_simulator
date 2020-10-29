@@ -995,6 +995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8044585594093687898, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
 --- !u!1001 &4471745656473718224
@@ -1115,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: MaxSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: Path
@@ -1135,7 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: Step
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
+      propertyPath: CheckingFrequency
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552412, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: m_Name

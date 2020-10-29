@@ -7,6 +7,7 @@ public class LightController : MonoBehaviour
     [SerializeField] public bool _canGoThrought { get; private set; } = false;
     public float ChangeInterval = 1; //seconds
 
+    public Transform _stopLine { get; private set; }
     private Material _currentMaterial;
     private float _timer;
 
@@ -15,6 +16,7 @@ public class LightController : MonoBehaviour
         _currentMaterial = gameObject.GetComponent<MeshRenderer>().material;
         _currentMaterial.color = Color.green;
         _canGoThrought = true;
+        _stopLine = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame

@@ -25,14 +25,16 @@ public class CarController : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] private float distanceTravelled = 0.0f;
     [SerializeField] private Coroutine accCorutine;
-    [SerializeField] private bool _braking = false;
+    [SerializeField] private bool _braking;
 
 
     public IEnumerator Accelarate(float a, float destSpeed)
     {
         while(Mathf.Abs(Speed) < destSpeed)
         {
+            if (_braking) yield break;
             Speed += a;
+
             //Debug.Log("Accelarate");
             yield return new WaitForEndOfFrame();
         }
@@ -47,7 +49,23 @@ public class CarController : MonoBehaviour
             //Debug.Log("Deaccelarate");
             yield return new WaitForEndOfFrame();
         }
-        _braking = false;
+    }
+
+    public void StopBeforePosition(Vector3 stop, float epsilon)
+    {
+        float distance;
+        Vector3 v = (transform.position - stop);
+        v.y = 0;
+        distance = v.magnitude;
+        if (distance > epsilon && Speed > 0)
+        {
+            Speed -= 2*(MaxSpeed*Time.deltaTime); //tzw wspolczynnik studenta
+        }
+        else
+        {
+            Speed = 0.0f;
+            _braking = false;
+        }
     }
 
     public IEnumerator CheckForObstacles()
@@ -64,7 +82,7 @@ public class CarController : MonoBehaviour
                     j != Quaternion.Euler(Angle / 2, 0.0f, 0.0f) * i;
                     j = Quaternion.Euler(Step, 0.0f, 0.0f) * j)
                 {
-                    Debug.DrawRay(transform.position, j * 10, Color.white, 1/CheckingFrequency);
+                    //Debug.DrawRay(transform.position, j * 10, Color.white, 1/CheckingFrequency);
                     //Look for lights
                     if(Physics.Raycast(transform.position, j, out RaycastHit hit, SeenDistance))
                     {
@@ -74,9 +92,9 @@ public class CarController : MonoBehaviour
                         LightController light = HitObject.GetComponent<LightController>();
                         if (light != null)
                         {
-                            //Debug.DrawRay(transform.position, j * 30, Color.red, 2);
-                            //Debug.Log(gameObject.name +" : I'm seeing Traffic Light Object: " + HitObject.name);
-                            if(!light._canGoThrought) BrakeBeforeLight(light);
+                            Debug.DrawRay(transform.position, j * 30, Color.red, 20);
+                            if(!light._canGoThrought) _observedLight = light;
+                            
                         }
                     }
                 }
@@ -88,10 +106,8 @@ public class CarController : MonoBehaviour
 
     private void BrakeBeforeLight(LightController light)
     {
-        _braking = true;
-        _observedLight = light;
         //StopCoroutine(accCorutine);
-        accCorutine = StartCoroutine(Deaccelarate(A, 0));
+        //accCorutine = StartCoroutine(StopBeforePosition(light._stopLine.position, 0.1f));
 
     }
 
@@ -106,6 +122,7 @@ public class CarController : MonoBehaviour
     void Update()
     {
         //moving
+        
         distanceTravelled += Speed * Time.deltaTime;
         transform.position = Path.path.GetPointAtDistance(distanceTravelled);
         transform.rotation = Path.path.GetRotationAtDistance(distanceTravelled);
@@ -116,8 +133,14 @@ public class CarController : MonoBehaviour
             if(_observedLight._canGoThrought)
             {
                 _observedLight = null;
+                _braking = false;
                 //StopCoroutine(accCorutine);
                 accCorutine = StartCoroutine(Accelarate(A, MaxSpeed));
+            }
+            else
+            {
+                StopBeforePosition(_observedLight.transform.position, 0.0f);
+                _braking = true;
             }
         }
 
