@@ -13,14 +13,14 @@ public class CarController : MonoBehaviour
     public float Speed = 20.0f;
     public float SeenDistance = 15;
     [Header("CAR PARAMETERS")]
-    public float MaxSpeed = 10;
+    public float MaxSpeed = 1;
     public float A = .0001f;
     [Header("LIGHT")]
     [SerializeField] private LightController _observedLight = null;
     [Header("RAYCASTING")]
     //Things for raycasting
     public float CheckingFrequency = 1;
-    public float Angle = 90;
+    public float Angle = 45;
     public float Step = 1;
     [Header("DEBUG")]
     [SerializeField] private float distanceTravelled = 0.0f;
@@ -82,7 +82,7 @@ public class CarController : MonoBehaviour
                     j != Quaternion.Euler(Angle / 2, 0.0f, 0.0f) * i;
                     j = Quaternion.Euler(Step, 0.0f, 0.0f) * j)
                 {
-                    //Debug.DrawRay(transform.position, j * 10, Color.white, 1/CheckingFrequency);
+                    Debug.DrawRay(transform.position, j * 10, Color.white, 1/CheckingFrequency);
                     //Look for lights
                     if(Physics.Raycast(transform.position, j, out RaycastHit hit, SeenDistance))
                     {
@@ -92,7 +92,7 @@ public class CarController : MonoBehaviour
                         LightController light = HitObject.GetComponent<LightController>();
                         if (light != null)
                         {
-                            Debug.DrawRay(transform.position, j * 30, Color.red, 20);
+                            Debug.DrawRay(transform.position, j * 30, Color.red, 1);
                             if(!light._canGoThrought) _observedLight = light;
                             
                         }

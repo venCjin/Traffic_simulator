@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField] public bool _canGoThrought { get; private set; } = false;
+    [SerializeField] public bool _canGoThrought = false;
     public float ChangeInterval = 1; //seconds
 
     public Transform _stopLine { get; private set; }
@@ -14,8 +14,14 @@ public class LightController : MonoBehaviour
     void Start()
     {
         _currentMaterial = gameObject.GetComponent<MeshRenderer>().material;
-        _currentMaterial.color = Color.green;
-        _canGoThrought = true;
+        if (_canGoThrought)
+        {
+            _currentMaterial.color = Color.green;
+        }
+        else
+        {
+            _currentMaterial.color = Color.red;
+        }
         _stopLine = GetComponentInChildren<Transform>();
     }
 

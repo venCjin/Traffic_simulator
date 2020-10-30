@@ -777,7 +777,7 @@ MonoBehaviour:
     showPerSegmentBounds: 0
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 1
+    bezierHandleScale: 6.81
     globalDisplaySettingsFoldout: 0
     keepConstantHandleSize: 0
     showNormalsInVertexMode: 0
@@ -947,6 +947,10 @@ PrefabInstance:
       propertyPath: ChangeInterval
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 476037785977305264, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+      propertyPath: _canGoThrought
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 476037785977305265, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
       propertyPath: m_Name
       value: Light
@@ -998,6 +1002,10 @@ PrefabInstance:
     - target: {fileID: 8044585594093687898, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8044585594093687898, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
@@ -1119,7 +1127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: MaxSpeed
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: Path
@@ -1131,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: Angle
-      value: 180
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4926702421908552401, guid: 19b94c2e8750d9c43bdb1c4b2150f18f, type: 3}
       propertyPath: SeenDistance
