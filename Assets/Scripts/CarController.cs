@@ -93,7 +93,7 @@ public class CarController : MonoBehaviour
                         if (light != null)
                         {
                             Debug.DrawRay(transform.position, j * 30, Color.red, 1);
-                            if(!light._canGoThrought) _observedLight = light;
+                            if(!light.canGoThrought) _observedLight = light;
                             
                         }
                     }
@@ -130,7 +130,7 @@ public class CarController : MonoBehaviour
         //observe light
         if(_observedLight != null)
         {
-            if(_observedLight._canGoThrought)
+            if(_observedLight.canGoThrought)
             {
                 _observedLight = null;
                 _braking = false;

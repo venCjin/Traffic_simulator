@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField] public bool _canGoThrought = false;
-    public float ChangeInterval = 1; //seconds
-
     public Transform _stopLine { get; private set; }
     private Material _currentMaterial;
-    private float _timer;
+    
+    [SerializeField] public bool canGoThrought = false;
+    public float redTime = 4;
+    public float greenTime = 4;
+    [SerializeField] private float _changeInterval; //seconds
 
-    void Start()
+    private float _timer = 0;
+
+    public void Setup()
     {
         _currentMaterial = gameObject.GetComponent<MeshRenderer>().material;
-        if (_canGoThrought)
+        if (canGoThrought)
         {
             _currentMaterial.color = Color.green;
+            _changeInterval = greenTime;
         }
         else
         {
             _currentMaterial.color = Color.red;
+            _changeInterval = redTime;
         }
         _stopLine = GetComponentInChildren<Transform>();
+    }
+
+    void Start()
+    {
+        Setup();
     }
 
     // Update is called once per frame
@@ -30,11 +40,11 @@ public class LightController : MonoBehaviour
     {
         _timer += Time.deltaTime;
         //Debug.Log(_canGoThrought);
-        if(_timer > ChangeInterval)
+        if(_timer > _changeInterval)
         {
             _timer = 0;
-            _canGoThrought = !_canGoThrought;
-            if (_canGoThrought)
+            canGoThrought = !canGoThrought;
+            if (canGoThrought)
             {
                  _currentMaterial.color = Color.green;
             }

@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: ChangeInterval
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 476037785977305264, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+      propertyPath: canGoThrought
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 476037785977305265, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
       propertyPath: m_Name
       value: Light
@@ -321,6 +325,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476037785977305268, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
   m_PrefabInstance: {fileID: 112742699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &112742701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 476037785977305264, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+  m_PrefabInstance: {fileID: 112742699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eecc0581d82cd43a3a2ff52b36f1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &266659584
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266659585}
+  - component: {fileID: 266659586}
   m_Layer: 0
   m_Name: Crossing Lights
   m_TagString: Untagged
@@ -353,6 +369,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &266659586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266659584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e76e20cbd7e894189953fe7d0cf05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 112742701}
+  - {fileID: 487540591}
 --- !u!1001 &487540589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -423,6 +454,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 476037785977305268, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
   m_PrefabInstance: {fileID: 487540589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &487540591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 476037785977305264, guid: cfba75c5d6853c047a0e5463043f10d5, type: 3}
+  m_PrefabInstance: {fileID: 487540589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eecc0581d82cd43a3a2ff52b36f1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &602288643
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,9 +511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 726766439}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  angleX: 0
-  angleY: 0
-  angleZ: 45
 --- !u!1 &726766438
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,9 +795,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 1452421580}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  angleX: 45
-  angleY: 0
-  angleZ: 0
 --- !u!1 &2095857059
 GameObject:
   m_ObjectHideFlags: 0
