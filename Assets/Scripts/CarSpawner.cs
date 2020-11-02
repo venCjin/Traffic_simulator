@@ -6,7 +6,11 @@ using PathCreation;
 public class CarSpawner : MonoBehaviour
 {
     public PathCreator Path;
+    public RoadEnd roadEnd;
     public GameObject carPrefab;
+
+    [SerializeField] private GameObject[] _carPool;
+    [SerializeField] private uint _traveledCount = 0;
 
     private IEnumerator Spawn()
     {
@@ -20,9 +24,18 @@ public class CarSpawner : MonoBehaviour
         }
     }
 
+    public void CarHitRoadEnd(GameObject car)
+    {
+        gameObject.SetActive(false);
+        gameObject.GetComponent<Car>().distanceTravelled = 0.0f;
+        _traveledCount += 1;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        roadEnd = GetComponentInChildren<RoadEnd>();
+        roadEnd.spawner = this;
         StartCoroutine(Spawn());
     }
 

@@ -27,7 +27,7 @@ public class Car : MonoBehaviour
     //public float distanceToObstacle = 0; //starting dis to light
 
     [Header("DEBUG")]
-    [SerializeField] private float distanceTravelled = 0.0f;
+    public float distanceTravelled = 0.0f;
     public const float carWidth = 2.0f;
     public bool accelerating = true;
 
@@ -52,7 +52,6 @@ public class Car : MonoBehaviour
             Car inFront = hit.collider.gameObject.GetComponent<Car>();
             if (inFront)
             {
-                //Debug.Log(inFront);
                 Debug.DrawRay(transform.position, transform.forward, Color.red, 0.33f);
                 if (Vector3.Distance(transform.position, inFront.transform.position) < carWidth)
                 {
@@ -66,13 +65,7 @@ public class Car : MonoBehaviour
                     }
                 }
             }
-        }/*
-        else
-        {
-            //Debug.Log("dupa", this);
-            _braking = false;
-            StartCoroutine(Accelarate(A, MaxSpeed));
-        }*/
+        }
 
         if (_observedLight)
         {
@@ -205,6 +198,17 @@ public class Car : MonoBehaviour
             }
         }
         
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject);
     }
 
 }
