@@ -26,8 +26,8 @@ public class CarSpawner : MonoBehaviour
 
     public void CarHitRoadEnd(GameObject car)
     {
-        gameObject.SetActive(false);
-        gameObject.GetComponent<Car>().distanceTravelled = 0.0f;
+        car.GetComponent<Car>().distanceTravelled = 0.0f;
+        car.SetActive(false);
         _traveledCount += 1;
     }
 

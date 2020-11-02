@@ -6,15 +6,17 @@ public class RoadEnd : MonoBehaviour
 {
     public CarSpawner spawner;
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject);
         if (collision.gameObject.name.Contains("Car"))
             spawner.CarHitRoadEnd(collision.gameObject);
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
+        //Debug.Log(other.gameObject);
+        if (other.gameObject.name.Contains("Car"))
+            spawner.CarHitRoadEnd(other.gameObject);
     }
 }

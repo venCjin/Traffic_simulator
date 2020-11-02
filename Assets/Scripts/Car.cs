@@ -201,7 +201,7 @@ public class Car : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject);
     }
@@ -209,6 +209,6 @@ public class Car : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject);
-    }
+    }*/
 
 }
