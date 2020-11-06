@@ -20,7 +20,7 @@ public class CarSpawner : MonoBehaviour
             car.Path = Path;
             car.A = Random.Range(0.03f, 0.2f);
             car.MaxSpeed = Random.Range(10.0f, 30.0f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
@@ -35,7 +35,7 @@ public class CarSpawner : MonoBehaviour
     void Start()
     {
         roadEnd = GetComponentInChildren<RoadEnd>();
-        roadEnd.spawner = this;
+        if(roadEnd) roadEnd.spawner = this;
         StartCoroutine(Spawn());
     }
 

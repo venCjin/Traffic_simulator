@@ -28,7 +28,7 @@ public class Car : MonoBehaviour
 
     [Header("DEBUG")]
     public float distanceTravelled = 0.0f;
-    public const float carWidth = 2.0f;
+    public float carWidth = 5.0f;
     public bool accelerating = true;
 
     void Start()
@@ -46,13 +46,13 @@ public class Car : MonoBehaviour
         transform.rotation = Path.path.GetRotationAtDistance(distanceTravelled);
 
         // stop after car
-        Debug.DrawRay(transform.position, transform.forward, Color.white, 0.33f);
+        Debug.DrawRay(transform.position, transform.forward * carWidth, Color.white, 0.33f);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SeenDistance))
         {
             Car inFront = hit.collider.gameObject.GetComponent<Car>();
             if (inFront)
             {
-                Debug.DrawRay(transform.position, transform.forward, Color.red, 0.33f);
+                Debug.DrawRay(transform.position, transform.forward * carWidth, Color.red, 0.33f);
                 if (Vector3.Distance(transform.position, inFront.transform.position) < carWidth)
                 {
                     if (Speed > inFront.Speed) Speed = 0.9f * inFront.Speed; // hamowanie i utrzymywanie odstępu
@@ -153,7 +153,6 @@ public class Car : MonoBehaviour
     {
         while (true)
         {
-            //Vector3 v = Quaternion.Euler(angleX, angleY, angleZ) * transform.forward;
             Vector3 v = transform.up + transform.forward;
             Debug.DrawRay(transform.position, v * 10, Color.white, 0.33f);
             if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
@@ -175,13 +174,13 @@ public class Car : MonoBehaviour
     }
 
 
-
+/*
     public IEnumerator CheckForObstacles()
     {
         while (true)
         {
             // car in front
-            Vector3 v = transform.forward + new Vector3(0, 0.1f, 0);
+            Vector3 v = transform.forward;// + new Vector3(0, 0.1f, 0);
             if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
             {
                 Debug.DrawRay(transform.position, v * 10, Color.white, 1 / 3);
@@ -190,25 +189,15 @@ public class Car : MonoBehaviour
                 {
                     Debug.DrawRay(transform.position, v * 10, Color.red, 1 / 3);
 
-                    /*if(other._stoped)
+                    if (other._stoped)
                     {
                         // stop after him
-                    }*/
+                    }
                 }
             }
         }
-        
+
     }
-
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject);
-    }*/
+*/
 
 }
