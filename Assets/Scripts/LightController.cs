@@ -17,14 +17,17 @@ public class LightController : MonoBehaviour
     public void Setup()
     {
         _currentMaterial = gameObject.GetComponent<MeshRenderer>().material;
+        _currentMaterial.EnableKeyword("_EMISSION");
         if (canGoThrought)
         {
-            _currentMaterial.color = Color.green;
+            //_currentMaterial.color = Color.green;
+            _currentMaterial.SetColor("_EmissionColor", Color.green);
             _changeInterval = greenTime;
         }
         else
         {
-            _currentMaterial.color = Color.red;
+            //_currentMaterial.color = Color.red;
+            _currentMaterial.SetColor("_EmissionColor", Color.red);
             _changeInterval = redTime;
         }
         _stopLine = GetComponentInChildren<Transform>();
@@ -46,11 +49,13 @@ public class LightController : MonoBehaviour
             canGoThrought = !canGoThrought;
             if (canGoThrought)
             {
-                 _currentMaterial.color = Color.green;
+                 //_currentMaterial.color = Color.green;
+                _currentMaterial.SetColor("_EmissionColor", Color.green);
             }
             else
             {
-                _currentMaterial.color = Color.red;
+                //_currentMaterial.color = Color.red;
+                _currentMaterial.SetColor("_EmissionColor", Color.red);
             }
         }
     }

@@ -9,7 +9,9 @@ public class CrossingController : MonoBehaviour
     public int[,] red_green_canGo =
         {
             { 4, 4, 0 },
-            { 4, 4, 1 }
+            { 4, 4, 1 },
+            { 4, 4, 1 },
+            { 4, 4, 0 },
         };
     
 
