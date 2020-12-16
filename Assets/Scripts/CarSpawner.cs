@@ -8,13 +8,13 @@ public class CarSpawner : MonoBehaviour
     public PathCreator Path;
     public RoadEnd roadEnd;
     public GameObject carPrefab;
-
+    public int CarNumber;
     [SerializeField] private GameObject[] _carPool;
     [SerializeField] private uint _traveledCount = 0;
 
     private IEnumerator Spawn()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < CarNumber; i++)
         {
             Car car = Instantiate(carPrefab, transform).GetComponent<Car>();
             car.Path = Path;

@@ -38,6 +38,11 @@ public class Car : MonoBehaviour
         UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
     }
 
+    private void OnMouseDown()
+    {
+        Camera.main.GetComponent<CameraController>().carToFollow = gameObject;
+    }
+
     void Update()
     {
         //moving

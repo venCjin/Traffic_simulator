@@ -132,6 +132,7 @@ MonoBehaviour:
   Path: {fileID: 7705499320919658799}
   roadEnd: {fileID: 7705499321126897052}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
+  CarNumber: 5
   _carPool: []
   _traveledCount: 0
 --- !u!1 &7705499321126897031
