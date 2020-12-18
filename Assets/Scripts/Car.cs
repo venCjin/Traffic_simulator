@@ -6,7 +6,8 @@ using PathCreation;
 public class Car : MonoBehaviour
 {
     [Header("DRIVER PARAMETERS")]
-    public PathCreator Path;
+    public PathCreator StartPath;
+    public PathCreator ActualPath;
     public float Speed = 20.0f;
     public float SeenDistance = 6.0f;
 
@@ -47,17 +48,17 @@ public class Car : MonoBehaviour
     {
         //moving
         distanceTravelled += Speed * Time.deltaTime;
-        transform.position = Path.path.GetPointAtDistance(distanceTravelled);
-        transform.rotation = Path.path.GetRotationAtDistance(distanceTravelled);
+        transform.position = ActualPath.path.GetPointAtDistance(distanceTravelled);
+        transform.rotation = ActualPath.path.GetRotationAtDistance(distanceTravelled);
 
         // stop after car
-        Debug.DrawRay(transform.position, transform.forward * carWidth, Color.white, 0.33f);
+        //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.white, 0.33f);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SeenDistance))
         {
             Car inFront = hit.collider.gameObject.GetComponent<Car>();
             if (inFront)
             {
-                Debug.DrawRay(transform.position, transform.forward * carWidth, Color.red, 0.33f);
+                //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.red, 0.33f);
                 if (Vector3.Distance(transform.position, inFront.transform.position) < carWidth)
                 {
                     if (Speed > inFront.Speed) Speed = 0.9f * inFront.Speed; // hamowanie i utrzymywanie odstępu
@@ -159,13 +160,13 @@ public class Car : MonoBehaviour
         while (true)
         {
             Vector3 v = transform.up + transform.forward;
-            Debug.DrawRay(transform.position, v * 10, Color.white, 0.33f);
+            //Debug.DrawRay(transform.position, v * 10, Color.white, 0.33f);
             if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
             {
                 LightController light = hit.collider.gameObject.GetComponent<LightController>();
                 if (light)
                 {
-                    Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
+                    //Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
 
                     //ustaw swiatlo
                     _observedLight = light;

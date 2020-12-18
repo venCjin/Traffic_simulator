@@ -22,7 +22,7 @@ public class ChangeLane : MonoBehaviour
         if (Random.Range(0.0f, 100.0f) < probablity)
         {
             // zmien
-            car.Path = newPath;
+            car.ActualPath = newPath;
             car.distanceTravelled = newPathDistance;
         } 
         // else { /*nie zmieniaj*/ }
