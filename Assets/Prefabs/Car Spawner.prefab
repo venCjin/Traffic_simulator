@@ -130,10 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: {fileID: 7705499320919658799}
-  roadEnd: {fileID: 7705499321126897052}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
   CarNumber: 5
-  _carPool: []
   _traveledCount: 0
 --- !u!1 &7705499321126897031
 GameObject:
@@ -193,7 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3435bd8dcaf3ac49a54fa051161011a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 7705499321060929613}
 --- !u!54 &7705499321126897053
 Rigidbody:
   m_ObjectHideFlags: 0
