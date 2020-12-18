@@ -36,7 +36,7 @@ public class Car : MonoBehaviour
     {
         StartCoroutine(Accelarate(A, MaxSpeed));
         StartCoroutine(CheckForLights());
-        UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+        //UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
     }
 
     private void OnMouseDown()
