@@ -8,7 +8,6 @@ public class Stage
 {
     public Stage(float d, List<bool> list)
     {
-        //base();
         duration = d;
         isGreen = list;
     }
@@ -35,8 +34,15 @@ public class CrossingController : MonoBehaviour
         if (timer > stages[stageIndex].duration)
         {
             timer = 0;
+            
+            // fixed stage and time
             stageIndex++;
             if (stageIndex > stages.Count - 1) stageIndex = 0;
+            //
+
+            // most cars
+
+            //
 
             setLights();
         }

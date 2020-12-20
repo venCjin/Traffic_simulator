@@ -19,8 +19,8 @@ public class CarSpawner : MonoBehaviour
             Car car = Instantiate(carPrefab, transform).GetComponent<Car>();
             car.StartPath = Path;
             car.ActualPath = Path;
-            car.A = Random.Range(0.5f, 0.5f);
-            car.MaxSpeed = Random.Range(50.0f, 50.0f);
+            car.A = Random.Range(0.4f, 0.9f);
+            car.MaxSpeed = Random.Range(30.0f, 60.0f);
             yield return new WaitForSeconds(0.3f);
         }
     }

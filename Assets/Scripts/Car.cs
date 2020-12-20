@@ -14,10 +14,10 @@ public class Car : MonoBehaviour
     [Header("CAR PARAMETERS")]
     public float MaxSpeed = 20.0f;
     public float A = 0.1f;
-    [SerializeField] private bool _braking;
+    [SerializeField] public bool braking;
 
     [Header("LIGHT")]
-    [SerializeField] private LightController _observedLight = null;
+    [SerializeField] public LightController observedLight = null;
     //[SerializeField] private float _startBrakingDistance = 0.0f;
 
 
@@ -29,7 +29,7 @@ public class Car : MonoBehaviour
 
     [Header("DEBUG")]
     public float distanceTravelled = 0.0f;
-    public float carWidth = 5.0f;
+    public float carWidth = 6.0f;
     public bool accelerating = true;
 
     void Start()
@@ -62,31 +62,24 @@ public class Car : MonoBehaviour
                 if (Vector3.Distance(transform.position, inFront.transform.position) < carWidth)
                 {
                     if (Speed > inFront.Speed) Speed = 0.9f * inFront.Speed; // hamowanie i utrzymywanie odstępu
-                    if (inFront._braking) { _braking = true; Speed = 0; }
-                    else 
-                    { 
-                        _braking = false; 
-                        
-                        if(!accelerating && Speed < MaxSpeed) StartCoroutine(Accelarate(A, MaxSpeed));
-                    }
+                    if (inFront.braking) { Stop(); }
+                    else { Go(); }
                 }
             }
         }
 
-        if (_observedLight)
+        if (observedLight)
         {
             //green light
-            if (_observedLight.canGoThrought)
+            if (observedLight.canGoThrought)
             {
-                _observedLight = null;
-                _braking = false;
-                if (!accelerating && Speed < MaxSpeed) StartCoroutine(Accelarate(A, MaxSpeed));
+                observedLight = null;
+                Go();
             }
             //red light
             else
             {
-                _braking = true;
-                Speed = 0;
+                Stop();
                 //StartCoroutine(Accelarate(-4.0f * A, 0.0f));
             }
         }
@@ -136,13 +129,24 @@ public class Car : MonoBehaviour
         #endregion
     }
 
+    public void Go()
+    {
+        braking = false;
+        if (!accelerating && Speed < MaxSpeed) StartCoroutine(Accelarate(A, MaxSpeed));
+    }
+
+    public void Stop()
+    {
+        braking = true;
+        Speed = 0;
+    }
 
     public IEnumerator Accelarate(float a, float destSpeed)
     {
         accelerating = true;
         while (Mathf.Abs(Speed) < destSpeed)
         {
-            if (_braking)
+            if (braking)
             {
                 accelerating = false;
                 yield break;
@@ -169,7 +173,7 @@ public class Car : MonoBehaviour
                     //Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
 
                     //ustaw swiatlo
-                    _observedLight = light;
+                    observedLight = light;
 
                     //ustaw start hamowania
                     //_startBrakingDistance = Vector3.Distance(transform.position, light._stopLine.position);
@@ -178,32 +182,5 @@ public class Car : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
-
-
-/*
-    public IEnumerator CheckForObstacles()
-    {
-        while (true)
-        {
-            // car in front
-            Vector3 v = transform.forward;// + new Vector3(0, 0.1f, 0);
-            if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
-            {
-                Debug.DrawRay(transform.position, v * 10, Color.white, 1 / 3);
-                Car other = hit.collider.gameObject.GetComponent<Car>();
-                if (other)
-                {
-                    Debug.DrawRay(transform.position, v * 10, Color.red, 1 / 3);
-
-                    if (other._stoped)
-                    {
-                        // stop after him
-                    }
-                }
-            }
-        }
-
-    }
-*/
 
 }
