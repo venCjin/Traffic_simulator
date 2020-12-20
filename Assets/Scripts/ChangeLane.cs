@@ -25,6 +25,7 @@ public class ChangeLane : MonoBehaviour
             car.ActualPath = newPath;
             car.distanceTravelled = newPathDistance;
             car.observedLight = null;
+            car.Go();
         } 
         // else { /*nie zmieniaj*/ }
     }
