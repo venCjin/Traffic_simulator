@@ -26,10 +26,11 @@ public class CameraController : MonoBehaviour
     private float totalRun = 1.0f;
     public TextMeshProUGUI LookAtText;
     public TextMeshProUGUI SpeedText;
+    private bool toggleCamera = true;
 
     void Update()
     {
-        if(carToFollow == null)
+        if (carToFollow == null && toggleCamera)
         {
             lastMouse = Input.mousePosition - lastMouse;
             lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0);
@@ -68,7 +69,7 @@ public class CameraController : MonoBehaviour
                 transform.Translate(p);
             }
         }
-        else
+        else if (carToFollow != null)
         {
             transform.forward = carToFollow.transform.forward;
             offset = new Vector3(Math.Abs(carToFollow.transform.forward.x * offset.x), offset.y, Math.Abs(carToFollow.transform.forward.z * offset.z)) + Vector3.up* Input.mouseScrollDelta.y - carToFollow.transform.forward * Input.mouseScrollDelta.y;
@@ -93,7 +94,9 @@ public class CameraController : MonoBehaviour
             LookAtText.gameObject.SetActive(false);
             SpeedText.gameObject.SetActive(false);
         }
-        if (Input.GetKey(KeyCode.Escape)) carToFollow = null;
+        if (Input.GetKeyDown(KeyCode.Escape)) carToFollow = null;
+        if (Input.GetKeyDown(KeyCode.Tab)) carToFollow = GameObject.FindObjectOfType<Car>().gameObject;
+        if (Input.GetKeyDown(KeyCode.CapsLock)) toggleCamera = !toggleCamera;
 
     }
 
