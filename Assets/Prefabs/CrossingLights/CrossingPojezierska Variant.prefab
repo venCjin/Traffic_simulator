@@ -53,7 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4632931012909813661, guid: 3ca55307ea27d804aa90e285730e44e6, type: 3}
       propertyPath: m_Name
-      value: CrossingPojezierska
+      value: CrossingPojezierska Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5038842780891735950, guid: 3ca55307ea27d804aa90e285730e44e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102653066006353732, guid: 3ca55307ea27d804aa90e285730e44e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.08
       objectReference: {fileID: 0}
     - target: {fileID: 5102653066568868778, guid: 3ca55307ea27d804aa90e285730e44e6, type: 3}
       propertyPath: m_LocalPosition.x

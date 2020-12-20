@@ -11,8 +11,8 @@ public class StopEnd : MonoBehaviour
         Car car = other.GetComponent<Car>();
         //if (car == null) return;
         //occupied = true;
-        if(car && car.braking) { occupied = true; Debug.Log("braking"); }
-        else { occupied = false; Debug.Log("go");  }
+        if(car && car.braking) { occupied = true; /*Debug.Log("braking");*/ }
+        else { occupied = false; /*Debug.Log("go");*/  }
 
     }
 

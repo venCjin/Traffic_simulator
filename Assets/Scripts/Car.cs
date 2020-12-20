@@ -9,7 +9,7 @@ public class Car : MonoBehaviour
     public PathCreator StartPath;
     public PathCreator ActualPath;
     public float Speed = 20.0f;
-    public float SeenDistance = 6.0f;
+    public float SeenDistance = 4.0f;
 
     [Header("CAR PARAMETERS")]
     public float MaxSpeed = 20.0f;
@@ -36,7 +36,7 @@ public class Car : MonoBehaviour
     {
         StartCoroutine(Accelarate(A, MaxSpeed));
         StartCoroutine(CheckForLights());
-        //UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+        UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
     }
 
     private void OnMouseDown()
@@ -52,7 +52,7 @@ public class Car : MonoBehaviour
         transform.rotation = ActualPath.path.GetRotationAtDistance(distanceTravelled);
 
         // stop after car
-        //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.white, 0.33f);
+        Debug.DrawRay(transform.position, transform.forward * SeenDistance, Color.white, 0.33f);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SeenDistance))
         {
             inFront = hit.collider.gameObject.GetComponent<Car>();
@@ -179,7 +179,7 @@ public class Car : MonoBehaviour
                 LightController light = hit.collider.gameObject.GetComponent<LightController>();
                 if (light)
                 {
-                    //Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
+                    Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
 
                     //ustaw swiatlo
                     observedLight = light;

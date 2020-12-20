@@ -16,11 +16,12 @@ public class Stage
 }
 public class CrossingController : MonoBehaviour
 {
+    public bool MostCars = true; 
     public List<LightController> lights;
     [HideInInspector] public float timer = 0;
     public int stageIndex = 0;
     public List<Stage> stages;
-    
+    public List<CarCounter> counters;
 
     void Start()
     {
@@ -29,20 +30,25 @@ public class CrossingController : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        float duration;
+        if (MostCars) duration = 2.0f;
+        else duration = stages[stageIndex].duration;
 
-        if (timer > stages[stageIndex].duration)
+        timer += Time.deltaTime;
+        if (timer > duration)
         {
             timer = 0;
             
-            // fixed stage and time
-            stageIndex++;
-            if (stageIndex > stages.Count - 1) stageIndex = 0;
-            //
-
-            // most cars
-
-            //
+            if (MostCars)
+            {
+                mostCars();
+            }
+            else
+            {
+                // fixed stage and time
+                stageIndex++;
+                if (stageIndex > stages.Count - 1) stageIndex = 0;            
+            }
 
             setLights();
         }
@@ -53,6 +59,22 @@ public class CrossingController : MonoBehaviour
         for (int i = 0; i < lights.Count; i++)
         {
             lights[i].canGoThrought = stages[stageIndex].isGreen[i];
+        }
+    }
+
+    private void mostCars()
+    {
+        int most = 0;
+        for (int i = 0; i < stages.Count; i++)
+        {
+            int stageMost = 0;
+            int j = 0;
+            for (; j < stages[i].isGreen.Count; j++)
+            {
+                if (stages[i].isGreen[j]) stageMost += counters[j].Count;
+            }
+            stageMost /= j;
+            if (stageMost > most) { most = stageMost; stageIndex = i; }
         }
     }
 }
