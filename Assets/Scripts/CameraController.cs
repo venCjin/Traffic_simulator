@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using TMPro;
 
 public class CameraController : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector3 offset;
     private Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
     private float totalRun = 1.0f;
-
+    public TextMeshProUGUI LookAtText;
+    public TextMeshProUGUI SpeedText;
 
     void Update()
     {
@@ -76,6 +78,20 @@ public class CameraController : MonoBehaviour
             transform.position = (carToFollow.transform.position - offset);
 
             Debug.Log(offset);
+        }
+        if(carToFollow != null)
+        {
+            LookAtText.gameObject.SetActive(true);
+            if (carToFollow.GetComponent<Car>().observedLight != null) LookAtText.text = "Observed light: " + carToFollow.GetComponent<Car>().observedLight + " " + carToFollow.GetComponent<Car>().observedLight.canGoThrought;
+            else if (carToFollow.GetComponent<Car>().inFront != null) LookAtText.text = "Car in Front: " + carToFollow.name +" " + carToFollow.GetComponent<Car>().Speed;
+            else LookAtText.text = "LookAt: null";
+            SpeedText.gameObject.SetActive(true);
+            SpeedText.text = "Speed: " + carToFollow.GetComponent<Car>().Speed;;
+        }
+        else
+        {
+            LookAtText.gameObject.SetActive(false);
+            SpeedText.gameObject.SetActive(false);
         }
         if (Input.GetKey(KeyCode.Escape)) carToFollow = null;
 

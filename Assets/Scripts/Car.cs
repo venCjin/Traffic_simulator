@@ -26,7 +26,7 @@ public class Car : MonoBehaviour
     //public float CheckingFrequency = 1;
     //public float Step = 5;
     //public float distanceToObstacle = 0; //starting dis to light
-
+    public Car inFront = null;
     [Header("DEBUG")]
     public float distanceTravelled = 0.0f;
     public float carWidth = 6.0f;
@@ -55,7 +55,7 @@ public class Car : MonoBehaviour
         //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.white, 0.33f);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SeenDistance))
         {
-            Car inFront = hit.collider.gameObject.GetComponent<Car>();
+            inFront = hit.collider.gameObject.GetComponent<Car>();
             if (inFront)
             {
                 //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.red, 0.33f);
@@ -66,7 +66,11 @@ public class Car : MonoBehaviour
                     else { Go(); }
                 }
             }
+        
+        
         }
+
+
 
         if (observedLight)
         {
@@ -84,8 +88,13 @@ public class Car : MonoBehaviour
             }
         }
 
-        
 
+        if (inFront != null && Vector3.Distance(transform.position, inFront.transform.position) > SeenDistance)
+        {
+            inFront = null;
+        }
+
+        if (inFront == null && observedLight == null) braking = false;
         #region old
         /*Vector3 i;
         for (float angle = 0; angle <= Angle; angle += Step)
