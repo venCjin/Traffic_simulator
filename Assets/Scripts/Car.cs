@@ -9,7 +9,7 @@ public class Car : MonoBehaviour
     public PathCreator StartPath;
     public PathCreator ActualPath;
     public float Speed = 20.0f;
-    public float SeenDistance = 4.0f;
+    public float SeenDistance = 1.0f;
 
     [Header("CAR PARAMETERS")]
     public float MaxSpeed = 20.0f;
@@ -29,14 +29,13 @@ public class Car : MonoBehaviour
     public Car inFront = null;
     [Header("DEBUG")]
     public float distanceTravelled = 0.0f;
-    public float carWidth = 6.0f;
+    public float carWidth = 10.0f;
     public bool accelerating = true;
 
     void Start()
     {
         StartCoroutine(Accelarate(A, MaxSpeed));
         StartCoroutine(CheckForLights());
-        UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
     }
 
     private void OnMouseDown()
@@ -89,7 +88,7 @@ public class Car : MonoBehaviour
         }
 
 
-        if (inFront != null && Vector3.Distance(transform.position, inFront.transform.position) > SeenDistance)
+        if (inFront != null && Vector3.Dot(inFront.transform.forward, transform.forward) < 0.0f)
         {
             inFront = null;
         }
@@ -176,16 +175,19 @@ public class Car : MonoBehaviour
             //Debug.DrawRay(transform.position, v * 10, Color.white, 0.33f);
             if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
             {
-                LightController light = hit.collider.gameObject.GetComponent<LightController>();
-                if (light)
+                if(Vector3.Dot(hit.collider.gameObject.transform.forward, transform.forward) < 0.0f)
                 {
-                    Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
+                    LightController light = hit.collider.gameObject.GetComponent<LightController>();
+                    if (light)
+                    {
+                        //Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
 
-                    //ustaw swiatlo
-                    observedLight = light;
+                        //ustaw swiatlo
+                        observedLight = light;
 
-                    //ustaw start hamowania
-                    //_startBrakingDistance = Vector3.Distance(transform.position, light._stopLine.position);
+                        //ustaw start hamowania
+                        //_startBrakingDistance = Vector3.Distance(transform.position, light._stopLine.position);
+                    }
                 }
             }
             yield return new WaitForSeconds(0.01f);

@@ -59,15 +59,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b04cf76b40ee8c458e4c5991a4289fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: {fileID: 0}
+  StartPath: {fileID: 0}
+  ActualPath: {fileID: 0}
   Speed: 20
-  SeenDistance: 15
+  SeenDistance: 10
   MaxSpeed: 20
   A: 0.1
-  _braking: 0
-  _observedLight: {fileID: 0}
+  braking: 0
+  observedLight: {fileID: 0}
+  inFront: {fileID: 0}
   distanceTravelled: 0
-  carWidth: 5
+  carWidth: 7
   accelerating: 1
 --- !u!65 &7840322745396270308
 BoxCollider:
