@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class Stage
@@ -22,11 +23,20 @@ public class CrossingController : MonoBehaviour
     public int stageIndex = 0;
     public List<Stage> stages;
     public List<CarCounter> counters;
-
+    private Toggle toggle;
     void Start()
     {
+        toggle = GameObject.FindObjectOfType<Toggle>();
+        toggle.onValueChanged.AddListener(setMostCars);
+        MostCars = toggle.isOn;
         setLights();
     }
+
+    private void setMostCars(bool arg0)
+    {
+        MostCars = arg0;
+    }
+
 
     void Update()
     {
@@ -77,4 +87,6 @@ public class CrossingController : MonoBehaviour
             if (stageMost > most) { most = stageMost; stageIndex = i; }
         }
     }
+
+    
 }
