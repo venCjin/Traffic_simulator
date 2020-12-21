@@ -12,7 +12,7 @@ public class TrafficSlider : MonoBehaviour
     void Start()
     {
         slider = GetComponent<Slider>();
-        UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+        //UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
     }
 
     // Update is called once per frame

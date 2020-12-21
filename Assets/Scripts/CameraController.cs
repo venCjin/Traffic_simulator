@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
 
             Debug.Log(offset);
         }
-        if(carToFollow != null)
+        /*if(carToFollow != null)
         {
             LookAtText.gameObject.SetActive(true);
             if (carToFollow.GetComponent<Car>().observedLight != null) LookAtText.text = "Observed light: " + carToFollow.GetComponent<Car>().observedLight + " " + carToFollow.GetComponent<Car>().observedLight.canGoThrought;
@@ -93,7 +93,7 @@ public class CameraController : MonoBehaviour
         {
             LookAtText.gameObject.SetActive(false);
             SpeedText.gameObject.SetActive(false);
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.Escape)) carToFollow = null;
         if (Input.GetKeyDown(KeyCode.Tab)) carToFollow = GameObject.FindObjectOfType<Car>().gameObject;
         if (Input.GetKeyDown(KeyCode.CapsLock)) toggleCamera = !toggleCamera;

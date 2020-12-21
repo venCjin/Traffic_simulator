@@ -307,6 +307,7 @@ MonoBehaviour:
   CarNumber: 40
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &18353883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1826,6 +1827,7 @@ MonoBehaviour:
   CarNumber: 50
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &154969523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1876,7 @@ MonoBehaviour:
   CarNumber: 40
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &171586281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,7 +2963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280257793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4464,6 +4467,7 @@ MonoBehaviour:
   CarNumber: 50
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &449840900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,6 +4516,7 @@ MonoBehaviour:
   CarNumber: 10
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &451395221
 GameObject:
   m_ObjectHideFlags: 0
@@ -5407,6 +5412,7 @@ MonoBehaviour:
   CarNumber: 35
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!4 &502094475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4460996025375196232, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
@@ -7653,6 +7659,7 @@ MonoBehaviour:
   CarNumber: 40
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &675327774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8365,6 +8372,7 @@ MonoBehaviour:
   CarNumber: 50
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &697258942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8803,7 +8811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746971583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1625.8, y: -19.8, z: 0}
+  m_LocalPosition: {x: -803, y: 0, z: -19.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482103797}
@@ -8823,9 +8831,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 1323451552}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  CarNumber: 20
+  CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 20
 --- !u!1001 &749020581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8915,7 +8924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[8].x
-      value: 191.24802
+      value: 191.248
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[8].y
@@ -8935,7 +8944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[10].y
-      value: 40.10303
+      value: 40.103077
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[11].x
@@ -8943,7 +8952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[11].y
-      value: 50.200703
+      value: 50.205418
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[12].x
@@ -8951,23 +8960,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[12].y
-      value: 50.30636
+      value: 50.31112
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[13].x
-      value: 188.32776
+      value: 188.32782
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[13].y
-      value: 51.83479
+      value: 51.839703
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[14].x
-      value: 188.4313
+      value: 188.43134
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[14].y
-      value: 128.11357
+      value: 128.12555
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[15].x
@@ -8975,7 +8984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[15].y
-      value: 204.39235
+      value: 204.41139
       objectReference: {fileID: 0}
     - target: {fileID: 6705078203166960683, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9238,6 +9247,7 @@ MonoBehaviour:
   CarNumber: 25
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &794156873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11205,6 +11215,7 @@ MonoBehaviour:
   CarNumber: 40
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &963083161
 GameObject:
   m_ObjectHideFlags: 0
@@ -11760,6 +11771,7 @@ MonoBehaviour:
   CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &1007411443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12076,7 +12088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020361067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1625.8, y: -14.86, z: 0}
+  m_LocalPosition: {x: -803, y: 0, z: -14.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482103797}
@@ -12096,9 +12108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 572576855}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  CarNumber: 20
+  CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 20
 --- !u!1001 &1041744877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13067,6 +13080,10 @@ PrefabInstance:
     - target: {fileID: 6933282532262466304, guid: a9dd3fa80d7ad154db5b077d735ee2bc, type: 3}
       propertyPath: m_Name
       value: Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933282532262466306, guid: a9dd3fa80d7ad154db5b077d735ee2bc, type: 3}
+      propertyPath: m_MaxValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6933282532262466307, guid: a9dd3fa80d7ad154db5b077d735ee2bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14419,6 +14436,7 @@ MonoBehaviour:
   CarNumber: 35
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &1216964831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18576,7 +18594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1460700658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19168,8 +19186,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482103796}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 818.03436, y: 614.4974, z: -0.274292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 696540328}
@@ -20378,6 +20396,7 @@ MonoBehaviour:
   CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &1537805904
 GameObject:
   m_ObjectHideFlags: 0
@@ -23932,6 +23951,7 @@ MonoBehaviour:
   CarNumber: 30
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1001 &1799985600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24638,7 +24658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846666605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1625.8, y: -17.1, z: 0}
+  m_LocalPosition: {x: -803, y: 0, z: -17.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482103797}
@@ -24658,9 +24678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 1429644707}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  CarNumber: 20
+  CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 20
 --- !u!1001 &1847486897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24890,6 +24911,7 @@ MonoBehaviour:
   CarNumber: 30
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!114 &1852553984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
@@ -26307,7 +26329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930236023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1625.8, y: -22.3, z: 0}
+  m_LocalPosition: {x: -803, y: 0, z: -22.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1482103797}
@@ -26327,9 +26349,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 1886625739}
   carPrefab: {fileID: 4460996025375196233, guid: 1bb0c86ca1b907d4d8d3d0aab146486b, type: 3}
-  CarNumber: 20
+  CarNumber: 15
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 20
 --- !u!114 &1933427929 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6705078203166960682, guid: 46f33c62b926d46459ed9f304faa84da, type: 3}
@@ -26706,6 +26729,7 @@ MonoBehaviour:
   CarNumber: 30
   cars: []
   initialCarNumber: 0
+  maxCarsLine: 0
 --- !u!1 &2008475825
 GameObject:
   m_ObjectHideFlags: 0

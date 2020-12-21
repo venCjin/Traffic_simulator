@@ -12,25 +12,18 @@ public class Car : MonoBehaviour
     public float SeenDistance = 1.0f;
 
     [Header("CAR PARAMETERS")]
+    public float carWidth = 10.0f;
     public float MaxSpeed = 20.0f;
     public float A = 0.1f;
-    [SerializeField] public bool braking;
+    public bool accelerating = true;
+    public bool braking;
 
-    [Header("LIGHT")]
-    [SerializeField] public LightController observedLight = null;
-    //[SerializeField] private float _startBrakingDistance = 0.0f;
-
-
-    //[Header("RAYCASTING")]
-    //Things for raycasting
-    //public float CheckingFrequency = 1;
-    //public float Step = 5;
-    //public float distanceToObstacle = 0; //starting dis to light
+    [Header("OBSTACLES")]
+    public LightController observedLight = null;
     public Car inFront = null;
+
     [Header("DEBUG")]
     public float distanceTravelled = 0.0f;
-    public float carWidth = 10.0f;
-    public bool accelerating = true;
 
     void Start()
     {
@@ -51,25 +44,19 @@ public class Car : MonoBehaviour
         transform.rotation = ActualPath.path.GetRotationAtDistance(distanceTravelled);
 
         // stop after car
-        Debug.DrawRay(transform.position, transform.forward * SeenDistance, Color.white, 0.33f);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, SeenDistance))
         {
             inFront = hit.collider.gameObject.GetComponent<Car>();
             if (inFront)
             {
-                //Debug.DrawRay(transform.position, transform.forward * carWidth, Color.red, 0.33f);
                 if (Vector3.Distance(transform.position, inFront.transform.position) < carWidth)
                 {
-                    if (Speed > inFront.Speed) Speed = 0.9f * inFront.Speed; // hamowanie i utrzymywanie odstępu
+                    if (Speed > inFront.Speed) Speed = 0.9f * inFront.Speed; // braking and keeping distance
                     if (inFront.braking) { Stop(); }
                     else { Go(); }
                 }
             }
-        
-        
         }
-
-
 
         if (observedLight)
         {
@@ -83,58 +70,16 @@ public class Car : MonoBehaviour
             else
             {
                 Stop();
-                //StartCoroutine(Accelarate(-4.0f * A, 0.0f));
             }
         }
 
 
-        if (inFront != null && Vector3.Dot(inFront.transform.forward, transform.forward) < 0.0f)
+        if (inFront != null && (Vector3.Dot(inFront.transform.forward, transform.forward) < 0.0f || Vector3.Distance(inFront.transform.position, transform.position) > SeenDistance))
         {
             inFront = null;
         }
 
         if (inFront == null && observedLight == null) braking = false;
-        #region old
-        /*Vector3 i;
-        for (float angle = 0; angle <= Angle; angle += Step)
-        {
-            i = Quaternion.Euler(0.0f, 0.0f, angle) * transform.forward;
-            Debug.DrawRay(transform.position, i * 20, Color.white, 1 / 3);
-                
-            //Look for lights
-            if (Physics.Raycast(transform.position, i, out RaycastHit hit, SeenDistance))
-            {
-                GameObject HitObject = hit.collider.gameObject;
-                //Debug.Log("Seeng something... " + HitObject.name);
-                LightController light = HitObject.GetComponent<LightController>();
-                if (light != null)
-                {
-                    Debug.DrawRay(transform.position, i * 10, Color.red, 1);
-                    if (!light._canGoThrought && _observedLight == null)
-                    {
-                        _observedLight = light;
-                        _startBrakingDistance = Vector3.Distance(transform.position, light._stopLine.position);
-                    }
-                    else if (_observedLight != null)
-                    {
-                        // stop car at line
-                        //Vector3 stop = new Vector3(light._stopLine.position.x, 0.0f, light._stopLine.position.z);
-                        //Vector3 car = new Vector3(transform.position.x, 0.0f, transform.position.z);
-                        //float distance = Vector3.Distance(car, stop);
-                        //if (distance < 0.2f) distance = 0.0f;
-                        float distance = Vector3.Distance(transform.position, light._stopLine.position);
-
-                        Debug.Log("DISTANCE = " + distance + ";    start = " + _startBrakingDistance);
-                        Speed = Mathf.Lerp(0.0f, Speed, distance/_startBrakingDistance);
-                    }
-                    else
-                    {
-                        Speed = MaxSpeed;
-                    }
-                }
-            }
-        }*/
-        #endregion
     }
 
     public void Go()
@@ -172,7 +117,7 @@ public class Car : MonoBehaviour
         while (true)
         {
             Vector3 v = transform.up + transform.forward;
-            //Debug.DrawRay(transform.position, v * 10, Color.white, 0.33f);
+
             if (Physics.Raycast(transform.position, v, out RaycastHit hit, SeenDistance))
             {
                 if(Vector3.Dot(hit.collider.gameObject.transform.forward, transform.forward) < 0.0f)
@@ -180,13 +125,7 @@ public class Car : MonoBehaviour
                     LightController light = hit.collider.gameObject.GetComponent<LightController>();
                     if (light)
                     {
-                        //Debug.DrawRay(transform.position, v * 10, Color.red, 0.33f);
-
-                        //ustaw swiatlo
                         observedLight = light;
-
-                        //ustaw start hamowania
-                        //_startBrakingDistance = Vector3.Distance(transform.position, light._stopLine.position);
                     }
                 }
             }

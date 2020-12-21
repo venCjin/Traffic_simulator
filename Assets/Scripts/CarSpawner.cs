@@ -11,6 +11,7 @@ public class CarSpawner : MonoBehaviour
     public int CarNumber;
     public List<Car> cars;
     public int initialCarNumber;
+    public int maxCarsLine;
 
     Coroutine SpawnCorutine;
     //[SerializeField] private GameObject[] _carPool;
@@ -20,14 +21,24 @@ public class CarSpawner : MonoBehaviour
     {
         if (CarNumber - cars.Count > 0)
         {
+            int count = 0;
             while(cars.Count < CarNumber)
             {
-                Car car = Instantiate(carPrefab, transform).GetComponent<Car>();
-                car.StartPath = Path;
-                car.ActualPath = Path;
-                car.A = Random.Range(0.4f, 0.9f);
-                car.MaxSpeed = Random.Range(30.0f, 60.0f);
-                cars.Add(car);
+                if (count < maxCarsLine)
+                {
+                    Car car = Instantiate(carPrefab, transform).GetComponent<Car>();
+                    car.StartPath = Path;
+                    car.ActualPath = Path;
+                    car.A = Random.Range(0.4f, 0.9f);
+                    car.MaxSpeed = Random.Range(30.0f, 60.0f);
+                    cars.Add(car);
+                    count++;
+                }
+                else
+                {
+                    count = 0;
+                    yield return new WaitForSecondsRealtime(60.0f);
+                }
                 yield return new WaitForSeconds(0.3f);
             }
         }
@@ -35,7 +46,7 @@ public class CarSpawner : MonoBehaviour
         {
             while(cars.Count > CarNumber)
             {
-                Destroy(cars[0]);
+                Destroy(cars[0].gameObject);
                 cars.RemoveAt(0);
             }
         }
@@ -61,6 +72,7 @@ public class CarSpawner : MonoBehaviour
     }
     void Start()
     {
+        if (maxCarsLine < 1) maxCarsLine = 99999;
         cars = new List<Car>();
         //roadEnd = GetComponentInChildren<RoadEnd>();
         //if(roadEnd) roadEnd.spawner = this;
